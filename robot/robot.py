@@ -1,6 +1,9 @@
 import wpilib
+from robot.systems import drive
+
 
 class MyRobot(wpilib.TimedRobot):
 
     def robotInit(self):
-        self.motor = wpilib.Jaguar(1)
+        self.drivetrain = drive.Drive()
+

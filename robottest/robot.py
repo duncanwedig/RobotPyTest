@@ -7,7 +7,7 @@ from commandbased import CommandBasedRobot
 class MyRobot(CommandBasedRobot):
 
     def robotInit(self):
-        # self.drivetrain = drive.Drive()
+        self.drivetrain = drive.Drive()
         pass
 
     def disabledInit(self):

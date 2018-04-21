@@ -1,13 +1,15 @@
 import wpilib
-from robottest.systems import drive
+from robottest.subsystems import drive
 from wpilib.command import Command
 from commandbased import CommandBasedRobot
+from robottest.commands.drive import drivetime
 
 
-class MyRobot(CommandBasedRobot):
+class Robot(CommandBasedRobot):
+
+    drivetrain = drive.Drive()
 
     def robotInit(self):
-        self.drivetrain = drive.Drive()
         pass
 
     def disabledInit(self):
@@ -23,7 +25,8 @@ class MyRobot(CommandBasedRobot):
         self.scheduler.getInstance().run()
 
     def autonomousInit(self):
-        pass
+        autonomous_command = drivetime.DriveTime(5, 0.5)
+        autonomous_command.start()
 
     def autonomousPeriodic(self):
         self.scheduler.getInstance().run()
@@ -31,5 +34,5 @@ class MyRobot(CommandBasedRobot):
 
 
 if __name__ == "__main__":
-    wpilib.run(MyRobot)
+    wpilib.run(Robot)
 

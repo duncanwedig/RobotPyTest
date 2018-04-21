@@ -23,6 +23,14 @@ class Drive(Subsystem):
         self.left_slave.follow(self.left_master)
         self.right_slave.follow(self.right_master)
 
+    def set_percent_output(self, left_power : float, right_power : float):
+        self.right_master.set(ctre.ControlMode.PercentOutput, right_power)
+        self.left_master.set(ctre.ControlMode.PercentOutput, left_power)
+
+        self.right_slave.set(ctre.ControlMode.PercentOutput, right_power)
+        self.left_slave.set(ctre.ControlMode.PercentOutput, left_power)
+
+
     def get_left_velocity(self):
         return self.left_master.getSelectedSensorVelocity(0)
 
